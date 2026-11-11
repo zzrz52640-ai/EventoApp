@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="EventoApp.Views.CadastroEventoPage"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:models="clr-namespace:EventoApp.Models"
+    x:DataType="models:Evento"
+    Title="Cadastro de Evento">
+
+    <ScrollView>
+        <VerticalStackLayout Padding="20" Spacing="12">
+
+            <Label Text="Dados do evento" FontSize="22" FontAttributes="Bold" />
+
+            <Label Text="Nome do evento" />
+            <Entry Placeholder="Ex.: Congresso de Tecnologia" Text="{Binding Nome}" />
+
+            <Label Text="Data de início" />
+            <DatePicker Date="{Binding DataInicio}" Format="dd/MM/yyyy" />
+
+            <Label Text="Data de término" />
+            <DatePicker Date="{Binding DataTermino}"
+                        MinimumDate="{Binding DataInicio}"
+                        Format="dd/MM/yyyy" />
+
+            <Label Text="Número de participantes" />
+            <Entry Placeholder="Ex.: 150" Keyboard="Numeric"
+                   Text="{Binding NumeroParticipantes}" />
+
+            <Label Text="Local do evento" />
+            <Entry Placeholder="Ex.: Centro de Convenções, São Paulo"
+                   Text="{Binding Local}" />
+
+            <Label Text="Custo por participante (R$)" />
+            <Entry Placeholder="Ex.: 85,50" Keyboard="Numeric"
+                   Text="{Binding CustoPorParticipante}" />
+
+            <Border Padding="14" Margin="0,8,0,0" StrokeThickness="1">
+                <Border.StrokeShape>
+                    <RoundRectangle CornerRadius="10" />
+                </Border.StrokeShape>
+                <VerticalStackLayout Spacing="4">
+                    <Label Text="Pré-visualização" FontAttributes="Bold" />
+                    <Label Text="{Binding DuracaoEmDiasTexto, StringFormat='Duração: {0}'}" />
+                    <Label Text="{Binding CustoTotalFormatado, StringFormat='Custo total: {0}'}" />
+                </VerticalStackLayout>
+            </Border>
+
+            <Button Text="Concluir cadastro" Margin="0,12,0,0"
+                    Clicked="OnConcluirClicked" />
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>

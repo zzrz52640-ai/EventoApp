@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="EventoApp.Views.ResumoEventoPage"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:models="clr-namespace:EventoApp.Models"
+    x:DataType="models:Evento"
+    Title="Resumo do Evento">
+
+    <ScrollView>
+        <VerticalStackLayout Padding="20" Spacing="14">
+
+            <Label Text="{Binding Nome}" FontSize="26" FontAttributes="Bold" />
+
+            <Grid ColumnDefinitions="140,*"
+                  RowDefinitions="Auto,Auto,Auto,Auto,Auto,Auto,Auto"
+                  RowSpacing="10" ColumnSpacing="8">
+
+                <Label Grid.Row="0" Grid.Column="0" Text="Local:" FontAttributes="Bold" />
+                <Label Grid.Row="0" Grid.Column="1" Text="{Binding Local}" />
+
+                <Label Grid.Row="1" Grid.Column="0" Text="Início:" FontAttributes="Bold" />
+                <Label Grid.Row="1" Grid.Column="1" Text="{Binding DataInicioFormatada}" />
+
+                <Label Grid.Row="2" Grid.Column="0" Text="Término:" FontAttributes="Bold" />
+                <Label Grid.Row="2" Grid.Column="1" Text="{Binding DataTerminoFormatada}" />
+
+                <Label Grid.Row="3" Grid.Column="0" Text="Duração:" FontAttributes="Bold" />
+                <Label Grid.Row="3" Grid.Column="1" Text="{Binding DuracaoEmDiasTexto}" />
+
+                <Label Grid.Row="4" Grid.Column="0" Text="TimeSpan:" FontAttributes="Bold" />
+                <Label Grid.Row="4" Grid.Column="1" Text="{Binding DuracaoTimeSpanTexto}" />
+
+                <Label Grid.Row="5" Grid.Column="0" Text="Participantes:" FontAttributes="Bold" />
+                <Label Grid.Row="5" Grid.Column="1" Text="{Binding ParticipantesTexto}" />
+
+                <Label Grid.Row="6" Grid.Column="0" Text="Custo/participante:" FontAttributes="Bold" />
+                <Label Grid.Row="6" Grid.Column="1" Text="{Binding CustoPorParticipanteFormatado}" />
+            </Grid>
+
+            <Border Padding="16" StrokeThickness="2">
+                <Border.StrokeShape>
+                    <RoundRectangle CornerRadius="12" />
+                </Border.StrokeShape>
+                <VerticalStackLayout Spacing="4">
+                    <Label Text="Custo total do evento" FontAttributes="Bold" />
+                    <Label Text="{Binding CustoTotalFormatado}" FontSize="28" FontAttributes="Bold" />
+                </VerticalStackLayout>
+            </Border>
+
+            <Button Text="Novo cadastro" Clicked="OnNovoCadastroClicked" />
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>
